@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 197594770053319573}
   - component: {fileID: 5429023330774750651}
   - component: {fileID: 7604491304414488138}
+  - component: {fileID: 4666405153791393594}
+  - component: {fileID: 9165654256283942695}
   m_Layer: 0
   m_Name: key-1
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6002389920467746001}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.805155, y: 1.253, z: -11.739543}
   m_LocalScale: {x: 170, y: 170, z: 170}
   m_ConstrainProportionsScale: 1
@@ -61,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 49b5e95fcf7fec24198b0f420420b310, type: 3}
+  - {fileID: 2100000, guid: 146897b590169574abe8471a2e0f9000, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,3 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4666405153791393594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6002389920467746001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0026224698, y: 0.0032488278, z: 0.00674254}
+  m_Center: {x: 0.00003189506, y: 0.0013861537, z: 0.0020919302}
+--- !u!114 &9165654256283942695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6002389920467746001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5188d6efe1daf242ae76fc2ded45f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
