@@ -1,0 +1,42 @@
+# Unity generated folders
+Glimmer-Of-Hope/[Ll]ibrary/
+Glimmer-Of-Hope/[Tt]emp/
+Glimmer-Of-Hope/[Oo]bj/
+Glimmer-Of-Hope/[Ll]ogs/
+Glimmer-Of-Hope/[Uu]serSettings/
+
+# IDE folders
+Glimmer-Of-Hope/.vs/
+Glimmer-Of-Hope/.vscode/
+Glimmer-Of-Hope/.idea/
+
+# Visual Studio / Unity generated files
+Glimmer-Of-Hope/*.csproj
+Glimmer-Of-Hope/*.sln
+Glimmer-Of-Hope/*.suo
+Glimmer-Of-Hope/*.user
+Glimmer-Of-Hope/*.userprefs
+Glimmer-Of-Hope/*.pidb
+Glimmer-Of-Hope/*.booproj
+Glimmer-Of-Hope/*.svd
+Glimmer-Of-Hope/*.pdb
+Glimmer-Of-Hope/*.mdb
+Glimmer-Of-Hope/*.opendb
+Glimmer-Of-Hope/*.VC.db
+
+# Unity generated files
+Glimmer-Of-Hope/sysinfo.txt
+Glimmer-Of-Hope/*.stacktrace
+
+# Memory captures and recordings
+Glimmer-Of-Hope/[Mm]emoryCaptures/
+Glimmer-Of-Hope/[Rr]ecordings/
+
+# Build folders
+Glimmer-Of-Hope/[Bb]uild/
+Glimmer-Of-Hope/[Bb]uilds/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
