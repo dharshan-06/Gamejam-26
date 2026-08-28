@@ -7,6 +7,7 @@ public class InteractionManager : MonoBehaviour
     public KeyCounter keyCounter;
     private int keyCount = 0;
     private GameObject currentTarget;
+    public LevelTransition levelTransition;
 
     void Update()
     {
@@ -62,16 +63,18 @@ void TryInteract()
         return;
     }
 
-    if (currentTarget.CompareTag("Door"))
+   if (currentTarget.CompareTag("Door"))
+{
+    if (keyCount >= 1)
     {
-        if (keyCount >= 1)
-        {
-            Debug.Log("DOOR UNLOCKED!");
-        }
-        else
-        {
-            Debug.Log("You need a key!");
-        }
+        Debug.Log("DOOR UNLOCKED!");
+
+        levelTransition.GoToNextLevel();
     }
+    else
+    {
+        Debug.Log("Not Enough Keys");
+    }
+}
 }
 }
