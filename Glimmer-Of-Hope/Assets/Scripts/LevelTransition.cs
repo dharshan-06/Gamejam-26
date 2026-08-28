@@ -12,6 +12,15 @@ public class LevelTransition : MonoBehaviour
     public float blackTime = 1f;
     public float fadeOutTime = 1f;
 
+    void Start()
+    {
+        Color color = blackScreen.color;
+        color.a = 1f;
+        blackScreen.color = color;
+
+        StartCoroutine(FadeOut());
+    }
+
     public void GoToNextLevel()
     {
         StartCoroutine(Transition());
@@ -19,26 +28,44 @@ public class LevelTransition : MonoBehaviour
 
     IEnumerator Transition()
     {
-        Color color = blackScreen.color;
-
-        float timer = 0f;
-
-        while (timer < fadeInTime)
-        {
-            timer += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, timer / fadeInTime);
-            blackScreen.color = color;
-            yield return null;
-        }
-
-        color.a = 1f;
-        blackScreen.color = color;
+        yield return StartCoroutine(Fade(0f, 1f, fadeInTime));
 
         if (doorSound != null)
             doorSound.Play();
 
         yield return new WaitForSeconds(blackTime);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex + 1
+        );
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return StartCoroutine(Fade(1f, 0f, fadeOutTime));
+    }
+
+    IEnumerator Fade(float startAlpha, float endAlpha, float duration)
+    {
+        Color color = blackScreen.color;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            color.a = Mathf.Lerp(
+                startAlpha,
+                endAlpha,
+                timer / duration
+            );
+
+            blackScreen.color = color;
+
+            yield return null;
+        }
+
+        color.a = endAlpha;
+        blackScreen.color = color;
     }
 }

@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     public float mouseSensitivity = 2f;
     public Transform playerCamera;
 
+    public bool verticalLookEnabled = true;
+
     private CharacterController controller;
     private float verticalRotation = 0f;
     private float gravity = -9.81f;
@@ -45,13 +47,18 @@ public class PlayerMovement : MonoBehaviour
     void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         transform.Rotate(Vector3.up * mouseX);
 
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -80f, 80f);
+        if (verticalLookEnabled)
+        {
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            verticalRotation -= mouseY;
+            verticalRotation = Mathf.Clamp(verticalRotation, -80f, 80f);
+
+            playerCamera.localRotation =
+                Quaternion.Euler(verticalRotation, 0f, 0f);
+        }
     }
 }
