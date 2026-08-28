@@ -4,7 +4,7 @@ public class InteractionManager : MonoBehaviour
 {
     public Camera playerCamera;
     public float interactionDistance = 3f;
-
+    public KeyCounter keyCounter;
     private int keyCount = 0;
     private GameObject currentTarget;
 
@@ -52,6 +52,8 @@ void TryInteract()
     if (key != null)
     {
         keyCount++;
+
+        keyCounter.AddKey();
 
         Debug.Log("Key Collected! Total Keys: " + keyCount);
 
