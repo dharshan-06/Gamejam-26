@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dffe3793833662a499883897600cd41f
+guid: 71ab05e08b60a51449bf18a684215be4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: a827a2b1f9ca02f46bcf6416b8f60d79, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.009
-    second: {fileID: 2100000, guid: 40b19a8aaa5c57f41bbd4148f73cce0d, type: 2}
+      name: Cobwebs
+    second: {fileID: 2100000, guid: b63e9911d41cf7a4ba107e0b67e542c4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
