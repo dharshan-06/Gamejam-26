@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 93734cc3ecdd4ba4b8edfc0f18163874
+guid: 1b7adaa24f261fb45b0523e538900d32
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trap_WoodenSpike_CM_Mat
+    second: {fileID: 2100000, guid: bc035a4220798bf48a2576a167890168, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 0
+    second: {fileID: 2800000, guid: 63fa5674512fc70479009858ecab63df, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
