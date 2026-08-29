@@ -8,6 +8,8 @@ public class LevelIntro : MonoBehaviour
     public float displayTime = 2f;
     public float fadeTime = 1f;
 
+    public LevelTutorial tutorial;
+
     void Start()
     {
         StartCoroutine(ShowLevelIntro());
@@ -35,5 +37,11 @@ public class LevelIntro : MonoBehaviour
 
         color.a = 0f;
         levelImage.color = color;
+
+        // Level intro is completely finished
+        if (tutorial != null)
+        {
+            tutorial.StartTutorial();
+        }
     }
 }

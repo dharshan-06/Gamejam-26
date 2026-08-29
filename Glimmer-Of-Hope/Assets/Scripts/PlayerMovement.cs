@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Footsteps")]
+public AudioSource footstepSource;
+public float footstepInterval = 0.45f;
+
+private float footstepTimer = 0f;
+
     public float moveSpeed = 4f;
     public float mouseSensitivity = 2f;
     public Transform playerCamera;
@@ -27,22 +33,44 @@ public class PlayerMovement : MonoBehaviour
         Look();
     }
 
-    void Move()
+   void Move()
+{
+    float x = Input.GetAxis("Horizontal");
+    float z = Input.GetAxis("Vertical");
+
+    Vector3 move = transform.right * x + transform.forward * z;
+
+    if (controller.isGrounded && verticalVelocity < 0)
+        verticalVelocity = -2f;
+
+    verticalVelocity += gravity * Time.deltaTime;
+
+    move.y = verticalVelocity;
+
+    controller.Move(move * moveSpeed * Time.deltaTime);
+
+    HandleFootsteps(x, z);
+}
+
+void HandleFootsteps(float x, float z)
+{
+    bool isMoving = Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f;
+
+    if (isMoving && controller.isGrounded)
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        footstepTimer -= Time.deltaTime;
 
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        if (controller.isGrounded && verticalVelocity < 0)
-            verticalVelocity = -2f;
-
-        verticalVelocity += gravity * Time.deltaTime;
-
-        move.y = verticalVelocity;
-
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        if (footstepTimer <= 0f)
+        {
+            footstepSource.Play();
+            footstepTimer = footstepInterval;
+        }
     }
+    else
+    {
+        footstepTimer = 0f;
+    }
+}
 
     void Look()
     {

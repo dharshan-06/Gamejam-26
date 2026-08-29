@@ -35,9 +35,17 @@ public class LevelTransition : MonoBehaviour
 
         yield return new WaitForSeconds(blackTime);
 
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex + 1
-        );
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        // Level 4 is the final level
+        if (currentScene == 4)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
     }
 
     IEnumerator FadeOut()
