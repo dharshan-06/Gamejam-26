@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerCamera;
 
     public bool verticalLookEnabled = true;
-    public bool canMove = false;
 
     private CharacterController controller;
     private float verticalRotation = 0f;
@@ -24,9 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-         if (!canMove)
-        return;
-
         Move();
         Look();
     }

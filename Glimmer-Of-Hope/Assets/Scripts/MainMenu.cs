@@ -1,33 +1,50 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
-    public GameObject storyPanel;
+    public GameObject homePage;
+    public GameObject plotPanel;
     public GameObject settingsPanel;
-    public PlayerMovement playerMovement;
+
+    public Slider sfxSlider;
+
+    void Start()
+    {
+        settingsPanel.SetActive(false);
+
+        if (sfxSlider != null)
+            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+    }
 
     public void StartGame()
     {
-        storyPanel.SetActive(true);
-        playerMovement.canMove = false;
+        homePage.SetActive(false);
+        plotPanel.SetActive(true);
     }
 
     public void ContinueGame()
     {
-        playerMovement.canMove = true;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Level 1");
     }
 
     public void OpenSettings()
     {
+        homePage.SetActive(true);
         settingsPanel.SetActive(true);
-        playerMovement.canMove = false;
     }
 
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+        homePage.SetActive(true);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
     }
 
     public void QuitGame()
