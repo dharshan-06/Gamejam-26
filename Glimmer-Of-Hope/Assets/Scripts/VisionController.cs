@@ -4,7 +4,6 @@ public class VisionController : MonoBehaviour
 {
     public Light spotlight;
     public GameObject blurryVision;
-    public PlayerMovement playerMovement;
 
     [Header("Audio")]
     public AudioSource torchFuzzSound;
@@ -22,8 +21,12 @@ public class VisionController : MonoBehaviour
     public float blurryEnvironmentIntensity = 0.25f;
     public float blurryReflectionIntensity = 0.45f;
 
+    private KeyItem[] keys;
+
     void Start()
     {
+        keys = FindObjectsOfType<KeyItem>();
+
         StartCoroutine(VisionCycle());
     }
 
@@ -41,35 +44,47 @@ public class VisionController : MonoBehaviour
             yield return new WaitForSeconds(blurryTime);
         }
     }
-void SetTorchVision()
-{
-    spotlight.enabled = true;
-    blurryVision.SetActive(false);
 
-    RenderSettings.ambientIntensity = torchEnvironmentIntensity;
-    RenderSettings.reflectionIntensity = torchReflectionIntensity;
+    void SetTorchVision()
+    {
+        spotlight.enabled = true;
+        blurryVision.SetActive(false);
 
-    playerMovement.verticalLookEnabled = true;
+        RenderSettings.ambientIntensity = torchEnvironmentIntensity;
+        RenderSettings.reflectionIntensity = torchReflectionIntensity;
 
-    torchButtonSound.Stop();
+        SetKeysVisible(true);
 
-    if (!torchFuzzSound.isPlaying)
-        torchFuzzSound.Play();
-}
+        torchButtonSound.Stop();
 
- void SetBlurryVision()
-{
-    spotlight.enabled = false;
-    blurryVision.SetActive(true);
+        if (!torchFuzzSound.isPlaying)
+            torchFuzzSound.Play();
+    }
 
-    RenderSettings.ambientIntensity = blurryEnvironmentIntensity;
-    RenderSettings.reflectionIntensity = blurryReflectionIntensity;
+    void SetBlurryVision()
+    {
+        spotlight.enabled = false;
+        blurryVision.SetActive(true);
 
-    playerMovement.verticalLookEnabled = false;
+        RenderSettings.ambientIntensity = blurryEnvironmentIntensity;
+        RenderSettings.reflectionIntensity = blurryReflectionIntensity;
 
-    torchFuzzSound.Stop();
+        SetKeysVisible(false);
 
-    torchButtonSound.Stop();
-    torchButtonSound.Play();
-}
+        torchFuzzSound.Stop();
+
+        torchButtonSound.Stop();
+        torchButtonSound.Play();
+    }
+
+    void SetKeysVisible(bool visible)
+    {
+        foreach (KeyItem key in keys)
+        {
+            if (key != null)
+            {
+                key.gameObject.SetActive(visible);
+            }
+        }
+    }
 }

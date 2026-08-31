@@ -24,4 +24,13 @@ public class KeyCounter : MonoBehaviour
 
         Debug.Log("Key UI: " + currentKeys + " / " + maxKeys);
     }
+
+    public void CompleteKeys()
+    {
+        currentKeys = maxKeys;
+
+        currentCountText.text = currentKeys.ToString();
+
+        Debug.Log("CHEAT: All keys completed!");
+    }
 }

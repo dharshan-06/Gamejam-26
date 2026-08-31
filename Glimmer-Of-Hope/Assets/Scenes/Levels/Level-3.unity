@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 12398051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1112,6 +1112,11 @@ PrefabInstance:
       value: swinging_axe (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 926bdfced249a6a41bee9f3ddf926ad2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302572261183205372, guid: 926bdfced249a6a41bee9f3ddf926ad2,
         type: 3}
       propertyPath: m_TagString
       value: Trap
@@ -3850,16 +3855,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotlight: {fileID: 1330610324}
   blurryVision: {fileID: 2081450587}
-  playerMovement: {fileID: 1076572209}
   torchFuzzSound: {fileID: 1506840011}
   torchButtonSound: {fileID: 653097471}
-  torchMinTime: 5
-  torchMaxTime: 10
-  blurryTime: 3.5
+  torchMinTime: 4
+  torchMaxTime: 8
+  blurryTime: 2
   torchEnvironmentIntensity: 0.1
   torchReflectionIntensity: 0.2
-  blurryEnvironmentIntensity: 0.35
-  blurryReflectionIntensity: 0.5
+  blurryEnvironmentIntensity: 0.4
+  blurryReflectionIntensity: 0.6
 --- !u!4 &266113357
 Transform:
   m_ObjectHideFlags: 0
@@ -8655,6 +8659,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5287686}
+  - {fileID: 2094268925}
   m_Father: {fileID: 1544147454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -16545,9 +16550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62a9dbdb1a6c7e43852d7cc63d62126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeKeysKey: 290
   playerCamera: {fileID: 412865766}
   interactionDistance: 7.5
   keyCounter: {fileID: 607886912}
+  requiredKeys: 7
   levelTransition: {fileID: 2012544842}
   keyPickupSound: {fileID: 1462372885}
 --- !u!4 &1036109109
@@ -17767,12 +17774,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ada4f8068e574b919818d6488234c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSource: {fileID: 1674386701}
-  footstepInterval: 0.45
   moveSpeed: 7
   mouseSensitivity: 5
   playerCamera: {fileID: 412865763}
-  verticalLookEnabled: 1
+  canMove: 1
 --- !u!143 &1076572210
 CharacterController:
   m_ObjectHideFlags: 0
@@ -22758,14 +22763,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403490556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 844787306}
   - {fileID: 1691004519}
-  m_Father: {fileID: 1817250902}
+  m_Father: {fileID: 1544147454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -23307,6 +23312,11 @@ PrefabInstance:
       value: swinging_axe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 926bdfced249a6a41bee9f3ddf926ad2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302572261183205372, guid: 926bdfced249a6a41bee9f3ddf926ad2,
         type: 3}
       propertyPath: m_TagString
       value: Trap
@@ -25103,6 +25113,7 @@ RectTransform:
   - {fileID: 1817250902}
   - {fileID: 590588772}
   - {fileID: 572636149}
+  - {fileID: 1403490559}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -29562,7 +29573,6 @@ RectTransform:
   - {fileID: 347313158}
   - {fileID: 165051759}
   - {fileID: 669670723}
-  - {fileID: 1403490559}
   - {fileID: 607886911}
   - {fileID: 2012544841}
   m_Father: {fileID: 1544147454}
@@ -31211,6 +31221,11 @@ PrefabInstance:
       value: swinging_axe (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 926bdfced249a6a41bee9f3ddf926ad2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302572261183205372, guid: 926bdfced249a6a41bee9f3ddf926ad2,
         type: 3}
       propertyPath: m_TagString
       value: Trap
@@ -34059,6 +34074,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2090377572}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2094268924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094268925}
+  - component: {fileID: 2094268927}
+  - component: {fileID: 2094268926}
+  m_Layer: 5
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2094268925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094268924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 572636149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2094268926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094268924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &2094268927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094268924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1001 &2097571315
 PrefabInstance:
   m_ObjectHideFlags: 0

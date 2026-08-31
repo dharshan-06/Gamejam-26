@@ -3937,16 +3937,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotlight: {fileID: 788351063}
   blurryVision: {fileID: 2043178124}
-  playerMovement: {fileID: 1989380250}
   torchFuzzSound: {fileID: 637673410}
   torchButtonSound: {fileID: 915892144}
-  torchMinTime: 3
+  torchMinTime: 4
   torchMaxTime: 7
-  blurryTime: 3.5
-  torchEnvironmentIntensity: 0.1
+  blurryTime: 2
+  torchEnvironmentIntensity: 0.2
   torchReflectionIntensity: 0.2
-  blurryEnvironmentIntensity: 0.35
-  blurryReflectionIntensity: 0.5
+  blurryEnvironmentIntensity: 0.4
+  blurryReflectionIntensity: 0.6
 --- !u!4 &1153663587
 Transform:
   m_ObjectHideFlags: 0
@@ -4061,7 +4060,6 @@ RectTransform:
   - {fileID: 788046465}
   - {fileID: 1306001181}
   - {fileID: 2067337163}
-  - {fileID: 1299897197}
   - {fileID: 863019170}
   - {fileID: 354709504}
   m_Father: {fileID: 2014011876}
@@ -4548,14 +4546,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299897196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 143489071}
   - {fileID: 920655639}
-  m_Father: {fileID: 1153837137}
+  m_Father: {fileID: 2014011876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4838,9 +4836,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62a9dbdb1a6c7e43852d7cc63d62126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeKeysKey: 290
   playerCamera: {fileID: 291169724}
   interactionDistance: 7.5
   keyCounter: {fileID: 863019171}
+  requiredKeys: 1
   levelTransition: {fileID: 354709505}
   keyPickupSound: {fileID: 736383584}
 --- !u!4 &1397577260
@@ -6479,12 +6479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6ada4f8068e574b919818d6488234c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSource: {fileID: 2014406115}
-  footstepInterval: 0.45
   moveSpeed: 7
   mouseSensitivity: 5
   playerCamera: {fileID: 291169721}
-  verticalLookEnabled: 1
+  canMove: 1
 --- !u!143 &1989380251
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6719,6 +6717,7 @@ RectTransform:
   - {fileID: 998415355}
   - {fileID: 1236160253}
   - {fileID: 340468720}
+  - {fileID: 1299897197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

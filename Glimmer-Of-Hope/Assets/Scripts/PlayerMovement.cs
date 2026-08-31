@@ -2,17 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Footsteps")]
-public AudioSource footstepSource;
-public float footstepInterval = 0.45f;
-
-private float footstepTimer = 0f;
-
     public float moveSpeed = 4f;
     public float mouseSensitivity = 2f;
     public Transform playerCamera;
 
-    public bool verticalLookEnabled = true;
+    public bool canMove = true;
 
     private CharacterController controller;
     private float verticalRotation = 0f;
@@ -29,48 +23,29 @@ private float footstepTimer = 0f;
 
     void Update()
     {
+        if (!canMove)
+            return;
+
         Move();
         Look();
     }
 
-   void Move()
-{
-    float x = Input.GetAxis("Horizontal");
-    float z = Input.GetAxis("Vertical");
-
-    Vector3 move = transform.right * x + transform.forward * z;
-
-    if (controller.isGrounded && verticalVelocity < 0)
-        verticalVelocity = -2f;
-
-    verticalVelocity += gravity * Time.deltaTime;
-
-    move.y = verticalVelocity;
-
-    controller.Move(move * moveSpeed * Time.deltaTime);
-
-    HandleFootsteps(x, z);
-}
-
-void HandleFootsteps(float x, float z)
-{
-    bool isMoving = Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f;
-
-    if (isMoving && controller.isGrounded)
+    void Move()
     {
-        footstepTimer -= Time.deltaTime;
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-        if (footstepTimer <= 0f)
-        {
-            footstepSource.Play();
-            footstepTimer = footstepInterval;
-        }
+        Vector3 move = transform.right * x + transform.forward * z;
+
+        if (controller.isGrounded && verticalVelocity < 0)
+            verticalVelocity = -2f;
+
+        verticalVelocity += gravity * Time.deltaTime;
+
+        move.y = verticalVelocity;
+
+        controller.Move(move * moveSpeed * Time.deltaTime);
     }
-    else
-    {
-        footstepTimer = 0f;
-    }
-}
 
     void Look()
     {
@@ -78,15 +53,12 @@ void HandleFootsteps(float x, float z)
 
         transform.Rotate(Vector3.up * mouseX);
 
-        if (verticalLookEnabled)
-        {
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -80f, 80f);
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -80f, 80f);
 
-            playerCamera.localRotation =
-                Quaternion.Euler(verticalRotation, 0f, 0f);
-        }
+        playerCamera.localRotation =
+            Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 }

@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
+    [Header("Developer Cheat")]
+    public KeyCode completeKeysKey = KeyCode.F9;
+
     public Camera playerCamera;
     public float interactionDistance = 3f;
     public KeyCounter keyCounter;
+
+    public int requiredKeys = 1;
+
     private int keyCount = 0;
     private GameObject currentTarget;
     public LevelTransition levelTransition;
@@ -20,6 +26,15 @@ public class InteractionManager : MonoBehaviour
         {
             TryInteract();
         }
+
+        if (Input.GetKeyDown(completeKeysKey))
+{
+    keyCount = requiredKeys;
+
+    keyCounter.CompleteKeys();
+
+    Debug.Log("CHEAT ACTIVATED: Required keys completed!");
+}
     }
 
     void DetectObject()
@@ -34,20 +49,13 @@ public class InteractionManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
         {
             currentTarget = hit.collider.gameObject;
-
-            Debug.Log("Looking at: " + currentTarget.name);
         }
     }
 
     void TryInteract()
     {
         if (currentTarget == null)
-        {
-            Debug.Log("NO TARGET");
             return;
-        }
-
-        Debug.Log("CLICK TARGET: " + currentTarget.name);
 
         KeyItem key = currentTarget.GetComponentInParent<KeyItem>();
 
@@ -76,7 +84,7 @@ public class InteractionManager : MonoBehaviour
 
         if (currentTarget.CompareTag("Door"))
         {
-            if (keyCount >= 1)
+            if (keyCount >= requiredKeys)
             {
                 Debug.Log("DOOR UNLOCKED!");
 
